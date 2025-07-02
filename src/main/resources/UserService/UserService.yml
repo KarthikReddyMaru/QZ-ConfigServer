@@ -10,5 +10,31 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
 server:
   port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, busrefresh, info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: User Service
+    description: Allows users to register with QZ.
+    owner: Beast Boy
